@@ -32,7 +32,7 @@ function Login (){
                     </div>
                     <div className="mb-3">
                         <label htmlFor="password"><strong>Password</strong></label>
-                        <input type="text" name="password" placeholder="Enter Your Password" onChange={handleInput} className="form-control rounded-0"></input>
+                        <input type="password" name="password" placeholder="Enter Your Password" onChange={handleInput} className="form-control rounded-0"></input>
                         {errors.password && <span className="text-danger">{errors.password}</span>}
                     </div>
                     <button type="submit" className="btn btn-success w-100">Login</button>
