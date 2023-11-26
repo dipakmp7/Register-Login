@@ -20,7 +20,12 @@ function Login (){
 
         if(errors.email === "" && errors.password === ""){
             axios.post("http://localhost:2023/login",values).then(res => {
-                navigate("/home")
+                if(res.data === "Success"){
+                    navigate("/home")
+                }
+                else{
+                    alert("No Such User Exist!!")
+                }
             })
             .catch(err => {
                 console.log(err)

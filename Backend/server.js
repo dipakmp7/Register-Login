@@ -26,7 +26,12 @@ app.post("/signup",(req,res)=>{
         if(err){
             return res.json(err)
         }
-        return res.json(data)
+        if(data.length > 0){
+            return res.json("Success")
+        }
+        else{
+            return res.json("Fail")
+        }
     })
 })
 
