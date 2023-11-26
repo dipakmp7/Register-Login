@@ -31,6 +31,18 @@ app.post("/signup",(req,res)=>{
 })
 
 
+app.post("/login",(req,res)=>{
+    const query = "select * from login where email = ? and password = ?"
+
+    db.query(query,[req.body.email,req.body.password],(err,data) =>{
+        if(err){
+            console.log(err)
+        }
+        return res.json(data)
+    })
+})
+
+
 app.listen(2023,()=>{
     console.log("server listening on 2023")
 })
