@@ -1,6 +1,7 @@
 import React, {useState} from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Validation from "./SignupValidation";
+import axios from 'axios'
 
 function Signup(){
 
@@ -12,9 +13,21 @@ function Signup(){
 
     const [errors,setError] = useState({})
 
+    const navigate = useNavigate()
+
     const handleSubmit = (e) => {
         e.preventDefault();
         setError(Validation(values))
+        if(errors.name === "" && errors.email === "" && errors.password === ""){
+            axios.post("http://localhost:2023/signup",values).then(res => {
+                console.log(res)
+                navigate("/")
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        }
+
     }
 
     const handleInput = (e) => {
