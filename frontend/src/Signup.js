@@ -17,7 +17,8 @@ function Signup(){
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setError(Validation(values))
+        setError(Validation(values))     // to check the errors and update errors state accordingly
+
         if(errors.name === "" && errors.email === "" && errors.password === ""){
             axios.post("http://localhost:2023/signup",values).then(res => {        
                 console.log(res)
@@ -31,7 +32,10 @@ function Signup(){
     }
 
     const handleInput = (e) => {
-        setValues(prevValue => ({...prevValue, [e.target.name] : [e.target.value]}))
+        setValues((prevValue) => ({...prevValue, [e.target.name] : [e.target.value]}))   // it uses (...) spread operator means it creates shallow copy of previous state
+
+        //shallow copy means any changes done will reflect to original object
+        //deep copy means a copy of object created and changes made to copy of object will not reflect to original object
     }
     return(
         <div className="d-flex justify-content-center align-items-center bg-secondary vh-100">

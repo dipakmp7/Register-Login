@@ -9,9 +9,14 @@ function App() {
     //  <Login/>
     // </div>
 
-    <BrowserRouter>
+    // wraps the entire application within BrowserRoute, enables client side routing
+    <BrowserRouter>           
+
+    {/* // a container for route definitions */}
     <Routes>
-      <Route path="/" element={<Login/>}></Route>
+
+      {/* // each Route component specifies the react element to be rendered when the route matches */}
+      <Route path="/" element={<Login/>}></Route>    
       <Route path="/signup" element={<Signup/>}></Route>
       <Route path="/home" element={<Home/>}></Route>
 
