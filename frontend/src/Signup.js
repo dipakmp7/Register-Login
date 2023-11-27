@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Validation from "./SignupValidation";
-import axios from 'axios'
+import axios from 'axios'                    // axios for making http request
 
 function Signup(){
 
@@ -19,9 +19,9 @@ function Signup(){
         e.preventDefault();
         setError(Validation(values))
         if(errors.name === "" && errors.email === "" && errors.password === ""){
-            axios.post("http://localhost:2023/signup",values).then(res => {
+            axios.post("http://localhost:2023/signup",values).then(res => {        
                 console.log(res)
-                navigate("/")
+                navigate("/")       // it moves to login page
             })
             .catch(err => {
                 console.log(err)
