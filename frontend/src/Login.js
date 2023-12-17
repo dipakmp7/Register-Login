@@ -20,6 +20,7 @@ function Login (){
 
         if(errors.email === "" && errors.password === ""){
             axios.post("http://localhost:2023/login",values).then(res => {
+                console.log(res)
                 if(res.data === "Success"){
                     navigate("/home")
                 }

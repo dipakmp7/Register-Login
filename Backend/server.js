@@ -23,15 +23,11 @@ app.post("/signup",(req,res)=>{
     const query = "insert into login (`name`,`email`,`password`) values (?)"
 
     db.query(query,[values],(err,data)=>{
+        // console.log(data)
         if(err){
             return res.json(err)
         }
-        if(data.length > 0){
-            return res.json("Success")
-        }
-        else{
-            return res.json("Fail")
-        }
+        return res.json(data)
     })
 })
 
@@ -40,10 +36,17 @@ app.post("/login",(req,res)=>{
     const query = "select * from login where `email` = ? and `password` = ?"
 
     db.query(query,[req.body.email,req.body.password],(err,data) =>{
+        // console.log(data)
+        // console.log(data.length)
         if(err){
             console.log(err)
         }
-        return res.json(data)
+        if(data.length > 0){
+            return res.json("Success")
+        }
+        else{
+            return res.json("Fail")
+        }
     })
 })
 
